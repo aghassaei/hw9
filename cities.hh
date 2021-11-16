@@ -17,6 +17,10 @@ class Cities {
   // into the current city ordering in some container.
   using permutation_t = std::vector<unsigned int>;
 
+  //CONSTRUCTOR (added by us)
+  Cities(); //no private members to initialize yet...
+
+
   // Given a permutation, return a new Cities object where the order of the
   // cities reflects the original order of this class after reordering with
   // the given ordering. So for example, the ordering { 1, 0 } simply swaps
