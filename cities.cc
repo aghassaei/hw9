@@ -110,7 +110,8 @@ Cities::Cities Cities::reorder(const permutation_t& ordering) const{
 	Cities new_cities = Cities();
 	std::vector<coord_t>& prev_all_pairs = all_pairs;
 	for (auto i = 0; i<ordering.size(); i++){
-		
+		//add to new_cities.all_pairs
+		//add prev_all_pairs[ordering[i]] to new_cities.all_pairs
 	}
 
 
