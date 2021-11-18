@@ -14,11 +14,12 @@ int main(int argc, char *argv[]){
 	    std::cerr << "No file was provided";
 	} 
 	else{
-		cities_object = Cities();
-		std::cin<<cities_file;
-		assert(not cities_object.all_pairs.empty()); // Make sure that << operator worked correctly
+		Cities cities_object = Cities();
+		std::cin>>cities_object;
+		
+		//private error
+		//assert(not cities_object.all_pairs.empty()); // Make sure that << operator worked correctly
 	}
-
 	
    return 0;
 }

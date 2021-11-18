@@ -33,8 +33,8 @@ double Cities::total_path_distance(const permutation_t& ordering) const{
 	assert(not ordering.empty()); // Make sure that ordering isn't an empty vector
 	double total_distance = 0;
 	for (unsigned i=0; i<ordering.size(); i++){
-		double delta_x = (all_pairs[i].first) - (all_pairs[i+1].first);
-		double delta_y = (all_pairs[i].second) - (all_pairs[i+1].second);
+		double delta_x = (all_pairs[i].first) - (all_pairs[(i+1)%ordering.size()].first);
+		double delta_y = (all_pairs[i].second) - (all_pairs[(i+1)%ordering.size()].second);
 		total_distance += std::hypot(delta_x, delta_y);
 	}
 	return total_distance;
