@@ -19,12 +19,15 @@ class Cities {
 
   // CONSTRUCTOR (added by us)
   // Takes a reference to an istream and ostream
-  Cities(std::istream& is, std::ostream& os);
+  Cities();
 
+  // Initialize cities object with cities in all_pairs
+  Cities generate(string filename);
   //OVERLOADING OPERATORS >> and <<
   //from link on assignment
   //method or free?
 
+<<<<<<< HEAD
   // friend std::ostream& operator<<(std::ostream& out_stream, const Cities& City ) {
   //        out_stream << City;
   //        return out_stream;
@@ -34,6 +37,22 @@ class Cities {
   //        in_stream >> city_object;
   //        return in_stream;
   //     }
+=======
+  friend std::ostream& operator<<(std::ostream& out_stream, const Cities& cities ) { 
+        for (auto city : cities.all_pairs){
+            out_stream << city.first<<'\t'<<city.second;
+        }
+                
+         return out_stream;            
+      }
+
+   friend std::istream& operator>>(std::istream& in_stream, Cities& cities ) { 
+         for (auto city : cities.all_pairs){
+            in_stream >> city.first>>city.second;
+         }
+         return in_stream;            
+      }
+>>>>>>> 2b06db1b5d539a05b6ad1b8ef9919a0cdac87294
 
   // Given a permutation, return a new Cities object where the order of the
   // cities reflects the original order of this class after reordering with
@@ -50,8 +69,12 @@ class Cities {
 
 //Added by us
 private:
+    // References to i and o streams
     std::istream& is_;
     std::ostream& os_;
+
+    // Coordinates
+    std::vector<coord_t> all_pairs;
 
 };
 
