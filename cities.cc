@@ -16,7 +16,11 @@ Cities::permutation_t random_permutation(unsigned len) {
 	static std::default_random_engine generator {seed};
 	Cities::permutation_t permutation {len-1};
 	std::iota(permutation.begin(), permutation.end(), 0);
+<<<<<<< HEAD
+	std::shuffle(permutation.begin(), permutation.end(), std::default_random_engine(seed);
+=======
 	std::shuffle(permutation.begin(), permutation.end(), generator);
+>>>>>>> 74f9a7d67a69d47bd20a5ed47a38d4bbecbec4a5
 
 	for(unsigned i=0; i < len-1; i++){
    std::cout << permutation.at(i) << ' ';
