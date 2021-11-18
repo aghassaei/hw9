@@ -22,22 +22,9 @@ class Cities {
   Cities();
 
   // Initialize cities object with cities in all_pairs
-  Cities generate(string filename);
+
   //OVERLOADING OPERATORS >> and <<
   //from link on assignment
-  //method or free?
-
-<<<<<<< HEAD
-  // friend std::ostream& operator<<(std::ostream& out_stream, const Cities& City ) {
-  //        out_stream << City;
-  //        return out_stream;
-  //     }
-  //
-  //  friend std::istream& operator>>(std::istream& in_stream, Cities& city_object ) {
-  //        in_stream >> city_object;
-  //        return in_stream;
-  //     }
-=======
   friend std::ostream& operator<<(std::ostream& out_stream, const Cities& cities ) { 
         for (auto city : cities.all_pairs){
             out_stream << city.first<<'\t'<<city.second;
@@ -52,7 +39,6 @@ class Cities {
          }
          return in_stream;            
       }
->>>>>>> 2b06db1b5d539a05b6ad1b8ef9919a0cdac87294
 
   // Given a permutation, return a new Cities object where the order of the
   // cities reflects the original order of this class after reordering with
