@@ -5,10 +5,8 @@
 #include "cities.hh"
 
 //CONSTRUCTOR
-Cities::Cities(){} //no private members to initialize yet
-	//: privateName_(thing you initialize it to){}
-	//^^syntax for that if we ever need it
-
+Cities::Cities(std::istream& is, std::ostream& os)
+	: is_(is), os_(os){}
 /*
 //TOTAL PATH DISTANCE
 //should there be two consts in here

@@ -5,7 +5,7 @@
 #pragma once
 
 #include <vector>
-
+#include <iostream>
 
 // Representation of an ordering of cities
 class Cities {
@@ -17,23 +17,24 @@ class Cities {
   // into the current city ordering in some container.
   using permutation_t = std::vector<unsigned int>;
 
-  //CONSTRUCTOR (added by us)
-  Cities(); //no private members to initialize yet...
+  // CONSTRUCTOR (added by us)
+  // Takes a reference to an istream and ostream
+  Cities(std::istream& is, std::ostream& os);
 
-  //OVERLOADING OPERATOR >>
+  //OVERLOADING OPERATORS >> and <<
   //from link on assignment
   //method or free?
-  /*
-  friend ostream &operator<<( ostream &output, const Distance &D ) { 
-         output << "F : " << D.feet << " I : " << D.inches;
-         return output;            
+
+  friend std::ostream& operator<<(std::ostream& out_stream, const Cities& City ) { 
+         out_stream << City;
+         return out_stream;            
       }
 
-   friend istream &operator>>( istream  &input, Distance &D ) { 
-         input >> D.feet >> D.inches;
-         return input;            
+   friend std::istream& operator>>(std::istream& in_stream, Cities& city_object ) { 
+         in_stream >> city_object;
+         return in_stream;            
       }
-*/
+
   // Given a permutation, return a new Cities object where the order of the
   // cities reflects the original order of this class after reordering with
   // the given ordering. So for example, the ordering { 1, 0 } simply swaps
@@ -46,4 +47,10 @@ class Cities {
   // The distance between any two cities is computed as the Euclidean 
   // distance on a plane between their coordinates.
   double total_path_distance(const permutation_t& ordering) const;
+
+//Added by us
+private:
+    std::istream& is_;
+    std::ostream& os_;
+
 };
