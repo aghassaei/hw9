@@ -2,9 +2,16 @@
 * Testing Cities class, starting with code from the assignment
 */
 #include <iostream>
-
 #include "cities.hh"
 
+int main()
+{
+  random_permutation(5);
+  random_permutation(5);
+  random_permutation(5);
+  random_permutation(10);
+  random_permutation(10);
+}
 /*
 auto fin = std::ifstream("five.tsv");
 Cities cities;

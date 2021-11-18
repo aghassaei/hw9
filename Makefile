@@ -9,10 +9,10 @@ OBJ=$(SRC:.cc=.o)
 
 all: test_cities tsp
 
-test_cities: cities.o test_cities.o
+test_cities: cities.o test_cities.o 
 	$(CXX) $(LDFLAGS) -o $@ $^
 
-tsp: tsp.o cities.o 
+tsp: tsp.o cities.o
 	$(CXX) $(LDFLAGS) -o $@ $^
 
 %.o: %.cc %.hh

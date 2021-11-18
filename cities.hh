@@ -25,15 +25,15 @@ class Cities {
   //from link on assignment
   //method or free?
 
-  friend std::ostream& operator<<(std::ostream& out_stream, const Cities& City ) { 
-         out_stream << City;
-         return out_stream;            
-      }
-
-   friend std::istream& operator>>(std::istream& in_stream, Cities& city_object ) { 
-         in_stream >> city_object;
-         return in_stream;            
-      }
+  // friend std::ostream& operator<<(std::ostream& out_stream, const Cities& City ) {
+  //        out_stream << City;
+  //        return out_stream;
+  //     }
+  //
+  //  friend std::istream& operator>>(std::istream& in_stream, Cities& city_object ) {
+  //        in_stream >> city_object;
+  //        return in_stream;
+  //     }
 
   // Given a permutation, return a new Cities object where the order of the
   // cities reflects the original order of this class after reordering with
@@ -44,7 +44,7 @@ class Cities {
   // For a given permutation of the cities in this object,
   // compute how long (distance) it would take to traverse all the cities in the
   // order of the permutation, and then returning to the first city.
-  // The distance between any two cities is computed as the Euclidean 
+  // The distance between any two cities is computed as the Euclidean
   // distance on a plane between their coordinates.
   double total_path_distance(const permutation_t& ordering) const;
 
@@ -54,3 +54,5 @@ private:
     std::ostream& os_;
 
 };
+
+Cities::permutation_t random_permutation(unsigned len);
