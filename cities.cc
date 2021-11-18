@@ -1,44 +1,31 @@
 /* Aliya Ghassaei and Nina Young
 * Implimentation for Cities class
 */
+#include "cities.hh"
+
 #include <cmath>
 #include <cassert>
-
-#include "cities.hh"
 #include <iostream>
 #include <numeric>
 #include <random>
-
-<<<<<<< HEAD
-//CONSTRUCTOR
-Cities::Cities(std::istream& is, std::ostream& os)
-	: is_(is), os_(os){}
+#include <chrono>
+#include <algorithm>
 
 Cities::permutation_t random_permutation(unsigned len) {
 	unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
-	static std::default_random_engine{seed};
+	static std::default_random_engine generator {seed};
 	Cities::permutation_t permutation {len-1};
 	std::iota(permutation.begin(), permutation.end(), 0);
-	std::shuffle(permutation.begin(), permutation.end(), std::default_random_engine(seed));
+	std::shuffle(permutation.begin(), permutation.end(), generator);
 
 	for(unsigned i=0; i < len-1; i++){
    std::cout << permutation.at(i) << ' ';
  }
 	return permutation;
 }
-/*
-=======
-Cities generate(string filename)
-{
-    cities_object = Cities();
-    stream.open(filename);
-    std::cin<<stream;
-    assert(not cities_object.empty());
-    return cities_object;
-  }
 
 
->>>>>>> 2b06db1b5d539a05b6ad1b8ef9919a0cdac87294
+
 //TOTAL PATH DISTANCE
 //compute the total distance of traversing all the cities in the order defined by the permutation.
 //Don't forget to add the distance going back from the last city in the permutation to the first one.
