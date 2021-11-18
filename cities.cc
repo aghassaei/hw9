@@ -9,8 +9,9 @@
 Cities generate(string filename)
 {
     cities_object = Cities();
-    //read in from filename
-    //assert(not cities_object.empty());
+    stream.open(filename);
+    std::cin<<stream;
+    assert(not cities_object.empty());
     return cities_object;
   }
 
