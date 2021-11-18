@@ -16,11 +16,7 @@ Cities::permutation_t random_permutation(unsigned len) {
 	static std::default_random_engine generator {seed};
 	Cities::permutation_t permutation {len-1};
 	std::iota(permutation.begin(), permutation.end(), 0);
-<<<<<<< HEAD
-	std::shuffle(permutation.begin(), permutation.end(), std::default_random_engine(seed);
-=======
 	std::shuffle(permutation.begin(), permutation.end(), generator);
->>>>>>> 74f9a7d67a69d47bd20a5ed47a38d4bbecbec4a5
 
 	for(unsigned i=0; i < len-1; i++){
    std::cout << permutation.at(i) << ' ';
@@ -104,9 +100,22 @@ double Cities::total_path_distance(const permutation_t& ordering) const{
 
 
 
-/*
+
 //REORDER
+//It should return a new Cities object where the internal representation 
+//of the cities reflects the order as indexed by the permutation. So, for 
+//example, if the first element of the permutation is '3', then the first coordinate 
+//pair of the new cities object is the fourth pair in the original object (indices start at 0). 
 Cities::Cities Cities::reorder(const permutation_t& ordering) const{
+	Cities new_cities = Cities();
+	std::vector<coord_t>& prev_all_pairs = all_pairs;
+	for (auto i = 0; i<ordering.size(); i++){
+		
+	}
+
+
+
+	return new_cities;
 
 }
-*/
+
