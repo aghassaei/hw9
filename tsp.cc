@@ -17,10 +17,16 @@ int main(int argc, char *argv[]){
 	else{
 		Cities cities_object = Cities();
 		cities_file>>cities_object;
+    int iterations = 999999; // Iterations should be one less than total iterations we want
+    
+    // Compute the first distance for a random ordering and save result in shortest_distance
+    auto ordering = random_permutation(cities_object.size());
+    auto shortest_distance = cities_object.total_path_distance(ordering);
 
-    int iterations = 1000000;
-    double shortest_distance = 10000000;
+    // Continue iterating and compare current distance to shortest distance, updating shortest distance if necessary
     while (iterations) {
+
+      // Create 
       auto ordering = random_permutation(cities_object.size());
       auto distance = cities_object.total_path_distance(ordering);
       if (distance < shortest_distance) {
