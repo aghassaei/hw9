@@ -2,7 +2,6 @@
 * Implimentation for Cities class
 */
 #include "cities.hh"
-
 #include <cmath>
 #include <cassert>
 #include <iostream>
@@ -36,6 +35,11 @@ Cities::permutation_t random_permutation(unsigned len) {
 	std::iota(permutation.begin(), permutation.end(), 0);
 	std::shuffle(permutation.begin(), permutation.end(), generator);
 
+	// below is for testing that the permutation permutes randomly each time
+	// for(int i=0; i < permutation.size(); i++){
+	// std::cout << permutation[i] << ' ';
+	// }
+
 	return permutation;
 }
 
@@ -47,20 +51,32 @@ void Cities::push_city(Cities::coord_t coord) {
 	all_pairs.push_back(coord);
 }
 
+//helper function for total_path_distance that finds the distance between two cities
+double Cities::single_path_distance(const coord_t city1, const coord_t city2) const {
+	double delta_x = city1.first - city2.first;
+	double delta_y = city1.second - city2.second;
+	double distance = std::hypot(delta_x, delta_y);
+	assert(distance != 0);
+	return distance;
+}
 
 //TOTAL PATH DISTANCE
 //compute the total distance of traversing all the cities in the order defined by the permutation.
-//Don't forget to add the distance going back from the last city in the permutation to the first one.
 double Cities::total_path_distance(const permutation_t& ordering) const{
 	assert(not ordering.empty()); // Make sure that ordering isn't an empty vector
 	double total_distance = 0;
-	for (unsigned i=0; i < ordering.size(); i++){
-		double delta_x = (all_pairs[i].first) - (all_pairs[(i+1)%ordering.size()].first);
-		double delta_y = (all_pairs[i].second) - (all_pairs[(i+1)%ordering.size()].second);
-		total_distance += std::hypot(delta_x, delta_y);
-	}
-	return total_distance;
 
+	for (unsigned i=0; i < ordering.size()-1; i++){
+		assert(ordering[i] != ordering[i+1]);
+		int index = ordering[i];
+		int next_index = ordering[i+1];
+		auto distance = single_path_distance(all_pairs[index], all_pairs[next_index]);
+		total_distance += distance;
+	}
+//Don't forget to add the distance going back from the last city in the permutation to the first one.
+	auto last_city_distance = single_path_distance(all_pairs[0], all_pairs[all_pairs.size()-1]);
+	total_distance += last_city_distance;
+	return total_distance;
 }
 
 //REORDER

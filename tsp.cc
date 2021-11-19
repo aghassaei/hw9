@@ -19,12 +19,13 @@ int main(int argc, char *argv[]){
 		cities_file>>cities_object;
 
     int iterations = 1000000;
-    double shortest_distance;
+    double shortest_distance = 10000000;
     while (iterations) {
       auto ordering = random_permutation(cities_object.size());
       auto distance = cities_object.total_path_distance(ordering);
       if (distance < shortest_distance) {
         shortest_distance = distance;
+        assert(shortest_distance != 0);
         std::cout << iterations << '\t' << shortest_distance << std::endl;
       }
       iterations -= 1;

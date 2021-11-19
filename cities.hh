@@ -28,6 +28,7 @@ class Cities {
 
   int size(); // returns how many cities are in the vector
   void push_city(Cities::coord_t coord); // adds a city to the end of the list
+  double single_path_distance(const coord_t city1, const coord_t city2) const; //helper function, finds distance betw two cities
 
   double total_path_distance(const permutation_t& ordering) const;
 
