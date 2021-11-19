@@ -11,19 +11,41 @@
 #include <chrono>
 #include <algorithm>
 
+std::ostream& operator<<(std::ostream& out_stream, const Cities& cities ) {
+			for (auto city : cities.all_pairs){
+					out_stream << city.first<<'\t'<<city.second;
+			}
+
+			 return out_stream;
+		}
+
+std::istream& operator>>(std::istream& in_stream, Cities& cities ) {
+			 while (!in_stream.eof()){
+				 Cities::coord_t city;
+					in_stream >> city.first>>city.second;
+					cities.push_city(city);
+			 }
+			 return in_stream;
+		}
+
+
 Cities::permutation_t random_permutation(unsigned len) {
 	unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
 	static std::default_random_engine generator {seed};
-	Cities::permutation_t permutation {len-1};
+	Cities::permutation_t permutation (len);
 	std::iota(permutation.begin(), permutation.end(), 0);
 	std::shuffle(permutation.begin(), permutation.end(), generator);
 
-	for(unsigned i=0; i < len-1; i++){
-   std::cout << permutation.at(i) << ' ';
- }
 	return permutation;
 }
 
+int Cities::size() {
+	return all_pairs.size();
+}
+
+void Cities::push_city(Cities::coord_t coord) {
+	all_pairs.push_back(coord);
+}
 
 
 //TOTAL PATH DISTANCE
@@ -32,7 +54,7 @@ Cities::permutation_t random_permutation(unsigned len) {
 double Cities::total_path_distance(const permutation_t& ordering) const{
 	assert(not ordering.empty()); // Make sure that ordering isn't an empty vector
 	double total_distance = 0;
-	for (unsigned i=0; i<ordering.size(); i++){
+	for (unsigned i=0; i < ordering.size(); i++){
 		double delta_x = (all_pairs[i].first) - (all_pairs[(i+1)%ordering.size()].first);
 		double delta_y = (all_pairs[i].second) - (all_pairs[(i+1)%ordering.size()].second);
 		total_distance += std::hypot(delta_x, delta_y);
@@ -41,82 +63,16 @@ double Cities::total_path_distance(const permutation_t& ordering) const{
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //REORDER
-//It should return a new Cities object where the internal representation 
-//of the cities reflects the order as indexed by the permutation. So, for 
-//example, if the first element of the permutation is '3', then the first coordinate 
-//pair of the new cities object is the fourth pair in the original object (indices start at 0). 
-Cities::Cities Cities::reorder(const permutation_t& ordering) const{
+//It should return a new Cities object where the internal representation
+//of the cities reflects the order as indexed by the permutation. So, for
+//example, if the first element of the permutation is '3', then the first coordinate
+//pair of the new cities object is the fourth pair in the original object (indices start at 0).
+Cities Cities::reorder(const permutation_t& ordering) const{
 	Cities new_cities = Cities();
-	std::vector<coord_t>& prev_all_pairs = all_pairs;
-	for (auto i = 0; i<ordering.size(); i++){
-		//add to new_cities.all_pairs
-		//add prev_all_pairs[ordering[i]] to new_cities.all_pairs
+	const std::vector<coord_t>& prev_all_pairs = all_pairs;
+	for (auto i: ordering){
+		new_cities.push_city(prev_all_pairs[i]);
 	}
-
-
-
 	return new_cities;
-
 }
-

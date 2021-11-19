@@ -6,6 +6,7 @@
 
 #include <vector>
 #include <iostream>
+#include <sstream>
 
 // Representation of an ordering of cities
 class Cities {
@@ -17,51 +18,22 @@ class Cities {
   // into the current city ordering in some container.
   using permutation_t = std::vector<unsigned int>;
 
-  // CONSTRUCTOR (added by us)
-  // Takes a reference to an istream and ostream
-  Cities();
+  Cities() = default;
 
-  // Initialize cities object with cities in all_pairs
+  friend std::ostream& operator<<(std::ostream& out_stream, const Cities& cities );
 
-  //OVERLOADING OPERATORS >> and <<
-  //from link on assignment
-  friend std::ostream& operator<<(std::ostream& out_stream, const Cities& cities ) { 
-        for (auto city : cities.all_pairs){
-            out_stream << city.first<<'\t'<<city.second;
-        }
-                
-         return out_stream;            
-      }
+  friend std::istream& operator>>(std::istream& in_stream, Cities& cities );
 
-   friend std::istream& operator>>(std::istream& in_stream, Cities& cities ) { 
-         for (auto city : cities.all_pairs){
-            in_stream >> city.first>>city.second;
-         }
-         return in_stream;            
-      }
-
-  // Given a permutation, return a new Cities object where the order of the
-  // cities reflects the original order of this class after reordering with
-  // the given ordering. So for example, the ordering { 1, 0 } simply swaps
-  // the first two elements (coordinates) in the new Cities object.
   Cities reorder(const permutation_t& ordering) const;
 
-  // For a given permutation of the cities in this object,
-  // compute how long (distance) it would take to traverse all the cities in the
-  // order of the permutation, and then returning to the first city.
-  // The distance between any two cities is computed as the Euclidean
-  // distance on a plane between their coordinates.
+  int size(); // returns how many cities are in the vector
+  void push_city(Cities::coord_t coord); // adds a city to the end of the list
+
   double total_path_distance(const permutation_t& ordering) const;
 
-//Added by us
 private:
-    // References to i and o streams
-    std::istream& is_;
-    std::ostream& os_;
-
-    // Coordinates
-    std::vector<coord_t> all_pairs;
-
+      std::vector<coord_t> all_pairs;
 };
 
+//random_permutation is outside the class
 Cities::permutation_t random_permutation(unsigned len);
