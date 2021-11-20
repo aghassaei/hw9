@@ -15,14 +15,14 @@ where the code goes, where everything matters
 
 The ```Cities``` class holds information about the particiular x, y coordinates that the salesperson must visit in the problem. The coordinates, of type ```coord_t``` (```std::pair<int, int```), are stored as a vector in the private member ```all_pairs```. The bitshift operators `<<` and `>>` are overloaded such that Cities objects can be read/fill or output Cities objects from/to a stream like so:
 	
-	std::cin >>cities;
-	std::cout << cities; 
+	std::cin >> cities;		// Reads coordinates from a file and puts them into all_pairs
+	std::cout << cities; 	// 
 
+
+**note to self** put this in test functions
 #### Total path distance function
 
-describe
-
-helper function
+```total_path_distance``` returns a ```double``` representing the total distance traversed if the cities are visited in a particular order determined by the argument  ```ordering```: a ```const``` reference to a vector of unsigned integers representing indicies of ```all_pairs```. The function iterates over all pairs (better phrasing) of coords as determined by ```ordering``` and for each pair, calculates the distance between the starting and ending location with a helper function ```single_path_distance```. 
 
 #### reorder
 
@@ -55,7 +55,7 @@ To run the code on 50 cities, replace the second line with ```./tsp challenge.ts
 After either version, ```tsp.cc``` will write the ordering of the cities with the shortest distance to ```shortest.tsv```
 
 	cat shortest.tsv
-	
+
 	1       2       3       0       4       5
 
 ## Visualizations and Results
