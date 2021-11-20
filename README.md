@@ -18,21 +18,17 @@ The ```Cities``` class holds information about the particiular x, y coordinates 
 	std::cin >> cities;       // Reads coordinates from a file and puts them into all_pairs
 	std::cout << cities;      // Outputs x "\t" y "\n" for each coord in all_pairs  
 
-
-**note to self** put this in test functions
-#### Total path distance function
+#### `total_path_distance`
 
 ```total_path_distance``` returns a ```double``` representing the total distance traversed if the cities are visited in a particular order determined by the argument  ```ordering```: a ```const``` reference to a vector of unsigned integers representing indicies of ```all_pairs```. The function iterates over all pairs (better phrasing) of coords as determined by ```ordering``` and for each pair, calculates the distance between the starting and ending location with a helper function ```single_path_distance```. 
 
 #### reorder
 
-sdaf
+Reorder creates a new `Cities` object whose `all_pairs` member is the same as that of the previous `Cities` object except in a new order as determined by `ordering`.
 
-#### random permutation
+#### random_permutation
 
-outside of the class
-
-#### randomized search
+`random_permutation` was defined outside of the class and generates a random permutation of numbers for 0 to `len`.
 
 #### Other functions
 
@@ -41,6 +37,8 @@ Other functions we implimented in the Cities class were:
 ````int size()```` Returns the length of ```all_pairs```
 
 ````void push_city(Cities::coord_t coord)```` Adds a new city x, y location to the end of the vector ```all_pairs```
+
+```std::vector<coord_t> get_pairs()``` Returns the private member ```all_pairs```.
 
 #### Running the program
 
@@ -60,6 +58,15 @@ After either version, ```tsp.cc``` will write the ordering of the cities with th
 
 ## Visualizations and Results
 
-djfhaksdha
+For 5 cities, the shortest path to take was 
+	
+	insert here whichever one you ploted here
+
+! [](name-of-gif-file.gif)
 
 
+For 50 cities, the shortest path to take was
+
+	put here
+
+! [](name-of-gif-file.gif)
