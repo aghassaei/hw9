@@ -12,7 +12,7 @@
 
 std::ostream& operator<<(std::ostream& out_stream, const Cities& cities ) {
 			for (auto city : cities.all_pairs){
-					out_stream << city.first<<'\t'<<city.second;
+					out_stream<<city.first<<'\t'<<city.second<<std::endl;
 			}
 
 			 return out_stream;
@@ -21,7 +21,7 @@ std::ostream& operator<<(std::ostream& out_stream, const Cities& cities ) {
 std::istream& operator>>(std::istream& in_stream, Cities& cities ) {
 			 while (!in_stream.eof()){
 				 Cities::coord_t city;
-					in_stream >> city.first>>city.second;
+					in_stream>>city.first>>city.second;
 					cities.push_city(city);
 			 }
 			 return in_stream;
@@ -45,6 +45,10 @@ Cities::permutation_t random_permutation(unsigned len) {
 
 int Cities::size() {
 	return all_pairs.size();
+}
+
+std::vector<Cities::coord_t> Cities::get_pairs() {
+	return all_pairs;
 }
 
 void Cities::push_city(Cities::coord_t coord) {

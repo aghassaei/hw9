@@ -15,8 +15,8 @@ where the code goes, where everything matters
 
 The ```Cities``` class holds information about the particiular x, y coordinates that the salesperson must visit in the problem. The coordinates, of type ```coord_t``` (```std::pair<int, int```), are stored as a vector in the private member ```all_pairs```. The bitshift operators `<<` and `>>` are overloaded such that Cities objects can be read/fill or output Cities objects from/to a stream like so:
 	
-	std::cin >> cities;		// Reads coordinates from a file and puts them into all_pairs
-	std::cout << cities; 	// 
+	std::cin >> cities;       // Reads coordinates from a file and puts them into all_pairs
+	std::cout << cities;      // Outputs x "\t" y "\n" for each coord in all_pairs  
 
 
 **note to self** put this in test functions
