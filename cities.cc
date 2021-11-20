@@ -59,8 +59,8 @@ void Cities::push_city(Cities::coord_t coord) {
 
 //helper function for total_path_distance that finds the distance between two cities
 double Cities::single_path_distance(const coord_t city1, const coord_t city2) const {
-	double delta_x = city1.first - city2.first;
-	double delta_y = city1.second - city2.second;
+	double delta_x = double(city1.first) - double(city2.first);
+	double delta_y = double(city1.second) - double(city2.second);
 	double distance = std::hypot(delta_x, delta_y);
 	assert(distance != 0);
 	return distance;
@@ -80,7 +80,7 @@ double Cities::total_path_distance(const permutation_t& ordering) const{
 		total_distance += distance;
 	}
 //Don't forget to add the distance going back from the last city in the permutation to the first one.
-	auto last_city_distance = single_path_distance(all_pairs[0], all_pairs[all_pairs.size()-1]);
+	auto last_city_distance = single_path_distance(all_pairs[ordering[0]], all_pairs[ordering[ordering.size()-1]]);
 	total_distance += last_city_distance;
 	return total_distance;
 }

@@ -18,7 +18,7 @@ int main()
   cities_file >> cities;
   std::vector<Cities::coord_t> pairs = cities.get_pairs();
 
-  // Verify that it was sucessfully created and that all_pairs starts out empty
+  // Verify that it was sucessfully created and that all_pairs is not empty
   std::cout << cities << std::endl;
   assert(not pairs.empty());
   
