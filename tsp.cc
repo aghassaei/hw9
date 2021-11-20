@@ -41,12 +41,15 @@ int main(int argc, char *argv[]){
       }
       iterations -= 1;
     }
+    
     // Save results to file "shortest.tsv"
+    int n = best_ordering.size();
     std::ofstream results_file;
     results_file.open("shortest.tsv");
-
-    // need to fix this bc its not valid to push a vector into an ofstream this way
-    results_file<<best_ordering;
+    for (auto i=0; i<n-1; i++){
+      results_file<<best_ordering[i]<<"\t";
+    }
+    results_file<<best_ordering.back()<<std::endl;
 	}
   
    return 0;
