@@ -11,26 +11,26 @@ to visit each location and return to the original location. This problem is NP-h
 The program in tsp.cc searches for the best solution to this problem among a set of randomized solutions.
 where the code goes, where everything matters
 
-#### Cities class
+### `Cities` class
 
 The ```Cities``` class holds information about the particiular x, y coordinates that the salesperson must visit in the problem. The coordinates, of type ```coord_t``` (```std::pair<int, int```), are stored as a vector in the private member ```all_pairs```. The bitshift operators `<<` and `>>` are overloaded such that Cities objects can be read/fill or output Cities objects from/to a stream like so:
 	
 	std::cin >> cities;       // Reads coordinates from a file and puts them into all_pairs
 	std::cout << cities;      // Outputs x "\t" y "\n" for each coord in all_pairs  
 
-#### `total_path_distance`
+### `total_path_distance`
 
 ```total_path_distance``` returns a ```double``` representing the total distance traversed if the cities are visited in a particular order determined by the argument  ```ordering```: a ```const``` reference to a vector of unsigned integers representing indicies of ```all_pairs```. The function iterates over all pairs (better phrasing) of coords as determined by ```ordering``` and for each pair, calculates the distance between the starting and ending location with a helper function ```single_path_distance```. 
 
-#### reorder
+### `reorder`
 
 Reorder creates a new `Cities` object whose `all_pairs` member is the same as that of the previous `Cities` object except in a new order as determined by `ordering`.
 
-#### random_permutation
+### `random_permutation`
 
 `random_permutation` was defined outside of the class and generates a random permutation of numbers for 0 to `len`.
 
-#### Other functions
+### Other functions
 
 Other functions we implimented in the Cities class were:
 
@@ -40,7 +40,7 @@ Other functions we implimented in the Cities class were:
 
 ```std::vector<coord_t> get_pairs()``` Returns the private member ```all_pairs```.
 
-#### Running the program
+## Running the program
 
 To run the program on 5 cities, write the following into the commandline:
 	
