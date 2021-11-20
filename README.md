@@ -60,7 +60,7 @@ After either version, ```tsp.cc``` will write the ordering of the cities with th
 
 For 5 cities, the shortest path to take was 
 	
-	insert here whichever one you ploted here
+	insert here whichever one you ploted here and final distance
 
 ! [](name-of-gif-file.gif)
 

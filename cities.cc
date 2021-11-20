@@ -1,7 +1,7 @@
-/* Aliya Ghassaei and Nina Young
-* Implimentation for Cities class
-*/
-#include "cities.hh"
+/*
+ * Implimentation for Cities class
+ */
+
 #include <cmath>
 #include <cassert>
 #include <iostream>
@@ -9,6 +9,8 @@
 #include <random>
 #include <chrono>
 #include <algorithm>
+
+#include "cities.hh"
 
 std::ostream& operator<<(std::ostream& out_stream, const Cities& cities ) {
 			for (auto city : cities.all_pairs){
