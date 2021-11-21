@@ -47,7 +47,7 @@ int main(int argc, char *argv[]){
     std::ofstream results_file;
     results_file.open("shortest.tsv");
     for (auto i=0; i<n-1; i++){
-      results_file<<best_ordering[i]<<"\t";
+      results_file<<best_ordering[i]<<"\n";
     }
     results_file<<best_ordering.back()<<std::endl;
 	}
