@@ -14,13 +14,13 @@ where the code goes, where everything matters
 ### `Cities` class
 
 The ```Cities``` class holds information about the particiular x, y coordinates that the salesperson must visit in the problem. The coordinates, of type ```coord_t``` (```std::pair<int, int```), are stored as a vector in the private member ```all_pairs```. The bitshift operators `<<` and `>>` are overloaded such that Cities objects can be read/fill or output Cities objects from/to a stream like so:
-	
+
 	std::cin >> cities;       // Reads coordinates from a file and puts them into all_pairs
 	std::cout << cities;      // Outputs x "\t" y "\n" for each coord in all_pairs  
 
 ### `total_path_distance`
 
-```total_path_distance``` returns a ```double``` representing the total distance traversed if the cities are visited in a particular order determined by the argument  ```ordering```: a ```const``` reference to a vector of unsigned integers representing indicies of ```all_pairs```. The function iterates over all pairs (better phrasing) of coords as determined by ```ordering``` and for each pair, calculates the distance between the starting and ending location with a helper function ```single_path_distance```. 
+```total_path_distance``` returns a ```double``` representing the total distance traversed if the cities are visited in a particular order determined by the argument  ```ordering```: a ```const``` reference to a vector of unsigned integers representing indicies of ```all_pairs```. The function iterates over all pairs (better phrasing) of coords as determined by ```ordering``` and for each pair, calculates the distance between the starting and ending location with a helper function ```single_path_distance```.
 
 ### `reorder`
 
@@ -43,30 +43,28 @@ Other functions we implimented in the Cities class were:
 ## Running the program
 
 To run the program on 5 cities, write the following into the commandline:
-	
+
 	make
 
 	./tsp five.tsv
 
-To run the code on 50 cities, replace the second line with ```./tsp challenge.tsv```. 
+To run the code on 50 cities, replace the second line with ```./tsp challenge.tsv```.
 
 After either version, ```tsp.cc``` will write the ordering of the cities with the shortest distance to ```shortest.tsv```
 
 	cat shortest.tsv
 
-	1       2       3       0       4       5
+	4	1
+	2	3
+	0
+
 
 ## Visualizations and Results
 
-For 5 cities, the shortest path to take was 
-	
-	insert here whichever one you ploted here and final distance
+speed.gif visualizes the process the algorithm went through to find the shortest path for challenge.tsv, as well as the number of iterations it took to find that value.
 
-! [](name-of-gif-file.gif)
+! [](speed.gif)
 
+shortest.gif is a visualization of the shortest path that the algorithm found for challenge.tsv.
 
-For 50 cities, the shortest path to take was
-
-	put here
-
-! [](name-of-gif-file.gif)
+! [](shortest.gif)
