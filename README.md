@@ -63,8 +63,8 @@ After either version, ```tsp.cc``` will write the ordering of the cities with th
 
 speed.gif visualizes the process the algorithm went through to find the shortest path for challenge.tsv, as well as the number of iterations it took to find that value.
 
-! [](speed.gif)
+! []speed.gif
 
 shortest.gif is a visualization of the shortest path that the algorithm found for challenge.tsv.
 
-! [](shortest.gif)
+! []shortest.gif
